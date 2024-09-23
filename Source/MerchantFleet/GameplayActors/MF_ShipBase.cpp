@@ -1,6 +1,5 @@
-
-#include "EngineUtils.h"
 #include "GameplayActors/MF_ShipBase.h"
+#include "EngineUtils.h"
 #include "Components/BoxComponent.h"
 #include "Components/InventoryComponent.h"
 #include "Components/PortInventoryComponent.h"
