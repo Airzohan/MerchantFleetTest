@@ -20,22 +20,22 @@ class MERCHANTFLEET_API UPortInventoryComponent : public UInventoryComponent
 
 public:
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TMap<EResourceType, int32> ResourcePrices;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TMap<EResourceType, int32> BasePrices;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TMap<EResourceType, int32> MaxSells;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TMap<EResourceType, FResourceInfo> BaseItems;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	float PriceCoeff = 1.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UPDA_Prices* Prices;
 
 	UPROPERTY(BlueprintAssignable)

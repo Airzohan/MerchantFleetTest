@@ -24,7 +24,7 @@ protected:
 
 public:	
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	FLoadInfo HoldInfo;
 	
 	UPROPERTY(BlueprintAssignable)

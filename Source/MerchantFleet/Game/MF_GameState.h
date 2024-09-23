@@ -7,6 +7,7 @@
 #include "Delegates/Delegate.h"
 #include "MF_GameState.generated.h"
 
+class AMF_ZoneBase;
 class AMF_ShipBase;
 class AMF_PortBase;
 class UUserWidget;
@@ -28,26 +29,44 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TArray<AMF_PortBase*> Ports;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
 	TArray<AMF_ShipBase*> Ships;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
+	TArray<AMF_ZoneBase*> Zones;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TArray<FName> PortTags;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadOnly)
+	TArray<FVector> SpawnZoneLocations;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<UUserWidget> MainWidgetClass = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<AMF_ZoneBase> ZonePiratesClass = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TSubclassOf<AMF_ZoneBase> ZoneStormClass = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	int32 Money = 10000;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	int32 DayForChangePrice = 7;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	float SecondsPerDay = 5.f;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Autotrade = false;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	int32 MaxShips = 3;
 
 	UPROPERTY(BlueprintAssignable,BlueprintCallable)
 	FOnChangeMoney OnChangeMoney;
@@ -60,12 +79,6 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnChangePrice OnChangePrice;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	bool Autotrade = false;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int32 MaxShips = 3;
 
 	void SpawnZone();
 	
@@ -84,4 +97,16 @@ public:
 
 	UFUNCTION()
 	bool CanBuyShip();
+
+	UFUNCTION()
+	void GetSpawnZoneLocations();
+
+	UFUNCTION()
+	void GetPorts();
+
+	UFUNCTION()
+	void CreateMainWidget();
+
+	UFUNCTION()
+	void SpawnShipInRandPort();
 };

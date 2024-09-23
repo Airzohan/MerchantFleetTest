@@ -156,6 +156,7 @@ void AMF_ShipBase::ToNewPort(FName PortTag)
 			CurrentPort->Ship = nullptr;
 			CurrentPort->Occupied = false;
 			TargetPort->Occupied = true;
+			CurrentPort = nullptr;
 		}
 	}
 }

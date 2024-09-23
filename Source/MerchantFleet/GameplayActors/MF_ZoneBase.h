@@ -17,7 +17,7 @@ public:
 	// Sets default values for this actor's properties
 	AMF_ZoneBase();
 
-	UPROPERTY(EditAnywhere,BlueprintReadOnly)
+	UPROPERTY(EditDefaultsOnly,BlueprintReadOnly)
 	class USphereComponent* Sphere;
 	
 	UFUNCTION()
